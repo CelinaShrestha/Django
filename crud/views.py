@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from myproject.settings import EMAIL_HOST_USER #replace root with your project name
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import BlogForm
@@ -32,6 +33,7 @@ def particularData(request,id):
     context ={"blog":blog}
     return render(request,"crud/post.html",context)
 
+@login_required
 def create(request):
     forms = BlogForm(request.POST or None)
 
@@ -49,7 +51,7 @@ def contacts(request):
         email=request.POST.get("email")
         message=request.POST.get("message")
         subject = "Wants to Collaborate!!!"
-        recipient = "someone@yopmail.com",
+        recipient = "someone@yopmail.com","hplaptop7821@gmail.com",
        
         cont =Contact.create(name,message,email)
         cont.save()

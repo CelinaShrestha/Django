@@ -7,8 +7,8 @@ admin.site.index_title="Blog Admin"
 
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ("__str__","title","subtitle","description",)
-    fields = [("title","subtitle"),"description"]
+    list_display = ("__str__","title","user","subtitle","description",)
+    fields = [("title","subtitle","user"),"description"]
     list_editable = "title","subtitle",
     search_fields = "title",
 
